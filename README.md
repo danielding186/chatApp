@@ -8,5 +8,6 @@ Features:
 
 ### Installation
 * after `npm install`, the application is ready to use
+* `npm start` to start React Server
 * If `npm run build` is run, any changes made will be saved and built and `npm run server` will show those changes without additional steps
 
