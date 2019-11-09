@@ -1,0 +1,15 @@
+{
+  "name": "js-express",
+  "version": "1.0.0",
+  "description": "Due by Sun Feb 3, 11:59pm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Brett Ritter <swiftone@swiftone.org>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

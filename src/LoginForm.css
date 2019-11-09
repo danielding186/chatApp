@@ -1,0 +1,42 @@
+.login-panel {
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.username-panel {
+  margin: auto;
+}
+
+.submit-panel {
+  margin-top: 5px;
+}
+
+.login-panel-error {
+  color: red;
+  margin-right: 116px;
+  margin-top: 10px;
+}
+
+.username-label {
+  font-size: 0.9em;
+  margin: 10px;
+}
+
+.username-input {
+ 
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  height:30px;
+  min-width: 232px;
+}
+
+.submit-button {
+  background-color: #3CB371;
+  margin: auto;
+  padding: 10px;
+  min-width: 300px;
+  font-size: 1.1em;
+}

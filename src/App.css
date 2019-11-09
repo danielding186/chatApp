@@ -1,0 +1,150 @@
+.main-panel { 
+  display: flex;
+  flex-direction: column;
+  max-height: 95vh;
+}
+
+.display-panel { 
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  margin: 8px;
+}
+
+.logout { 
+  align-self: flex-end;
+  min-height: 30px;
+  margin: 5px;
+}
+
+/* User List */
+.users { 
+  border-right: 1px solid black;  
+  list-style: none;
+  padding: 8px;
+  margin: 0px;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9em;
+}
+     
+
+.user {
+  margin: 3px;
+}
+
+.currentUser {
+  color:blue;
+}
+
+/* Message List */
+.messages { 
+  list-style: none;
+  padding: 0px;
+  margin: 0;
+  width: 100%;
+}
+
+.messages li {
+  border-bottom: 5px;
+}
+
+.messages li:last-child { 
+  border-bottom: 0px;
+}
+
+.message-item {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 10px;
+}
+
+.message-item:hover { 
+  background-color: #BADA55;
+}
+
+.message-left { 
+  flex-direction: row;
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+.message-right { 
+  flex-direction: row-reverse;
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+}
+
+.user-info { 
+  display: flex;
+  flex-direction: column;
+}
+
+.username { 
+  font-size: 0.8em;
+  align-self: center;
+  max-width: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-info {
+  margin: 2px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-text { 
+  width: 100%;
+  display: inline-block;
+}
+
+.timestamp {
+  color: #999;
+  font-size:0.7em;
+  text-align: bottom;
+}
+
+.message-right .text-info .timestamp {
+  align-self: flex-end;
+}
+
+.avatar {
+  width: 46px;
+  border-radius: 50%;
+}
+
+
+/* Sender info */
+.outgoing { 
+  padding: 10px;
+  display: flex;
+  min-height: 25px;
+  flex-direction: row;
+}
+
+.msg-input { 
+  flex: 3 1 auto;
+  margin-right: 25px;
+}
+
+.msg-submit { 
+  flex: 1 1 auto;
+}
+
+
+.error{
+  color: red;
+}
+
+button {
+  background-color: #3CB371;
+  color:white;
+  padding: 2px;
+  min-width: 60px;
+}
+
