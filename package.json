@@ -5,10 +5,11 @@
   "dependencies": {
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "concurrently": "5.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently 'react-scripts start' 'cd server && nodemon server.js'",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
