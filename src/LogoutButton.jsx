@@ -1,9 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {logoutUser} from './store/actions';
 
-const LogoutButton = ({onLogout}) => (
+const LogoutButton = ({logoutUser}) => (
     <div className="logout">
-        <button type="submit" onClick={onLogout}>Logout</button>
+        <form onSubmit={e => {
+          e.preventDefault();
+          logoutUser();
+        }}>
+        <button type="submit">Logout</button>
+        </form>
    </div>
 );
 
-export default LogoutButton;
+export default connect(null, {logoutUser})(LogoutButton);

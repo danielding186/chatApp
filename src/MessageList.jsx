@@ -42,6 +42,8 @@ const MessageItem = ({className, sender, ts, text, avatar}) => (
 );
 
 const MessageList = ({messages, currentUser, users}) => {
+
+  console.log('....', messages);
 	const listItems = messages.map((msg) => {
       let avatar = 'default.jpg';
     	if ((msg.sender in users) && ('avatar' in users[msg.sender]))

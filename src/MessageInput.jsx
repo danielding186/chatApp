@@ -1,15 +1,28 @@
 import React from 'react';
 
-const MessageInput = (props) => (
-	<div className="outgoing">
-		<input className="msg-input" onKeyPress = {e => {  if (e.key === "Enter") props.onNewMessage(); }}
-				 onChange={ e => props.handleMsgInput(e.target.value) }
-				 value = {props.inputMsg}  
-		 		placeholder="Enter message to send"/>
-		 <button className="msg-submit" type="submit" onClick={props.onNewMessage} disabled={props.inputMsg === ''}>Send</button>
-     </div>
-	
-);
+import { connect } from 'react-redux';
+import {postMessage} from './store/actions';
 
-export default MessageInput;
+const MessageInput = ({postMessage}) => {
+	let input;
+  	return (
+		<div className="outgoing">
+			<form onSubmit={e => {
+				e.preventDefault()
+				if (!input.value.trim()) {
+				return
+				}
+				postMessage(input.value);
+				input.value = ''
+			}}>
+				<input className="msg-input" 
+						placeholder="Enter message to send"
+						ref= {node => (input = node)} />
+				<button className="msg-submit" type="submit">Send</button>
+	 		</form>
+	 	</div>
+	);
+}
+
+export default connect(null, {postMessage})(MessageInput);
 

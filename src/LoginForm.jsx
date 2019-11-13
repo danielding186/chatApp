@@ -1,30 +1,32 @@
 import React from 'react';
 import './LoginForm.css';
 
-const ImageChooser = ({hanldeSubmit}) => (
-  <button type="submit" onClick={hanldeSubmit}>Image</button>
-);
+import { connect } from 'react-redux';
+import {loginUser} from './store/actions';
 
-const NameInput = ({handleInput, username}) => (
-  <div className="username-panel">
-      <label className="username-label">Username</label>
-      <input className="username-input" placeholder="Enter Username"
-       onChange={ e => handleInput(e.target.value)} value={username} />
-  </div>
-);
-
-const SubmitButton = ({handleLogin, username}) => (
-  <div className="submit-panel">
-      <button className="submit-button" onClick={handleLogin} type="submit" disabled = {username === ""}>Login</button>
-  </div>
-);
-
-
-const LoginForm = (props) => (
+const LoginForm = ({ loginUser }) => {
+  let input;
+  return (
   <div className="login-panel">
-    <NameInput handleInput={props.onInputChange} username={props.username} /> 
-    <SubmitButton handleLogin={props.onLogin} username={props.username} /> 
-  </div>
-);
+    <form onSubmit={e => {
+          e.preventDefault()
+          if (!input.value.trim()) {
+            return
+          }
+          loginUser(input.value);
+          input.value = ''
+        }}>
 
-export default LoginForm;
+      <div className="username-panel">
+        <label className="username-label">Username</label>
+        <input className="username-input" placeholder="Enter Username"
+         ref= {node => (input = node)} />
+      </div>
+      <div className="submit-panel">
+        <button className="submit-button" type="submit">Login</button>
+      </div>
+      </form>
+  </div>)
+};
+
+export default connect(null, {loginUser})(LoginForm);

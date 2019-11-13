@@ -44,7 +44,7 @@ app.post('/messages',  express.json(), (req, res) => {
      res.status(400).json({ 'error': `'username' and 'text' property are required`});
    } else {
       chat.addMessage({ sender: username, text, timestamp: new Date() });
-      res.json({'messages':chat.messages});
+      res.json({'messages':chat.messages, 'users':chat.users});
    }
 });
 

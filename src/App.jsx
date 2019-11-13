@@ -6,31 +6,13 @@ import MessageInput from './MessageInput';
 import UserError from './UserError';
 import LoginForm from './LoginForm';
 import LogoutButton from './LogoutButton';
-import { loginService, logoutService, newMessageService, messagesService } from './services';
+
+import { connect } from 'react-redux';
+import { fetchMessages } from './store/actions';
+
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      users: {},
-      messages: [],
-      inputUser: '',
-      inputMsg: '',
-      isLogined: false,
-      currentError: null,
-    };
-   
-    this.handleNewMessage = this.handleNewMessage.bind(this);
-    this.handleMsgInput = this.handleMsgInput.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
-    this.updateInputUser = this.updateInputUser.bind(this);
-
-  }
-
   componentDidMount() {
-    this.refresh();
-
     this.interval = setInterval(() => { 
       this.refresh();
     }, 5000);
@@ -40,58 +22,10 @@ class App extends Component {
     clearInterval(this.interval);
   }
 
-  updateInputUser = username => {
-    this.setState({inputUser:username});
-  };
-
-  handleLogin = () => {
-    const username = this.state.inputUser;
-    loginService(username).then( info => {
-      if (info)
-       this.setState({messages: info.messages, users:info.users, isLogined:true, currentError:null});
-      else
-        this.setState({currentError:new Error(`Error: Cannot login - backend server not started!`)});
-    }).catch( error => {
-      this.setState({currentError: error});
-    });
-  }
-
-  handleLogout = user => {
-    const username = this.state.inputUser;
-    logoutService(username).then(info=> {
-      this.setState({messages:[], users:{}, inputUser:'', isLogined:false, currentError:null});  
-    }).catch( error => {
-      this.setState({currentError: error});
-    });
-  }
-
-  handleNewMessage = () => {
-    if (this.state.inputMsg === "") {
-      return;
-    }
-    const text = this.state.inputMsg;
-    const username = this.state.inputUser;
-    newMessageService(username, text).then(info=> {
-       this.setState({messages: info.messages, currentError:null, inputMsg:""});
-    }).catch( error => {
-      this.setState({currentError: error});
-    });
-  }
-
-  handleMsgInput = (text) => {
-    this.setState({inputMsg:text})
-  }
-
   refresh() {
-
-    if (!this.state.isLogined)
+    if (!this.props.isLogined)
       return;
-
-    messagesService().then(info => {
-        this.setState({users: info.users, messages: info.messages, currentError:null});
-    }).catch( error => {
-      this.setState({currentError: error});
-    });
+    this.props.fetchMessages();
   }
 
   render() {
@@ -99,34 +33,36 @@ class App extends Component {
     return (
       <div>
 
-        { !this.state.isLogined && 
-          <LoginForm onLogin={this.handleLogin} 
-               onInputChange={this.updateInputUser} 
-               username={this.state.inputUser}/>  }
+        { !this.props.isLogined && 
+          <LoginForm />  }
 
-        { this.state.isLogined &&
+        { this.props.isLogined &&
           <div className="main-panel">
-            <LogoutButton onLogout={this.handleLogout}/>
+            <LogoutButton/>
             
             <div className="display-panel">
-              <UserList users={this.state.users} currentUser={this.state.inputUser}/>
-              <MessageList messages={this.state.messages}
-                           currentUser={this.state.inputUser}
-                           users={this.state.users}
+              <UserList users={this.props.users} currentUser={this.props.inputUser}/>
+              <MessageList messages={this.props.messages}
+                           currentUser={this.props.inputUser}
+                           users={this.props.users}
                            />
             </div>
-            <MessageInput onNewMessage={this.handleNewMessage}
-                         handleMsgInput={this.handleMsgInput}
-                         inputMsg = {this.state.inputMsg}
-                         /> 
+            <MessageInput/> 
           </div>
         }
  
-        <UserError infoError={this.state.currentError}/>
+        <UserError/>
         
       </div>
     );
   }
 }
 
-export default App;
+// function to convert the global state obtained from redux to local props
+function mapStateToProps(state) {
+  console.log('mapStateToProps:' + state.isLogined + ' messages:' +  state.messages);
+  return {...state}
+}
+
+// wrapping the component within the connect HOC and calling the default function directly
+export default connect(mapStateToProps, { fetchMessages })(App);
