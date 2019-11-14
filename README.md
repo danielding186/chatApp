@@ -1,11 +1,13 @@
 ### A chat application: a React SPA using React & Redux and Express
 
-* Features:
+* Keypoint:
     * Implemented a backend server(using Express) that will host the React app as well as provide REST services
-    * Use CSS and DOM
-    * Use Redux to maintain the state of Components
+    * Applied CSS, JavaScript, React, Redux, Express, JSON, Restful API
+
+* Features:
     * Users can login/logout without passwords and send messages
-    * Can be usable by multiple users simultaneously, users and messages are visible to all users.
+    * User list and message list are visible to all users
+    * It can be usable by multiple users simultaneously
 
 * Backend Server API (Running on Port 4000):
     * /login (Post)
