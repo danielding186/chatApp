@@ -1,5 +1,4 @@
-### 
-A chat application: a React SPA using React & Redux and Express
+### A chat application: a React SPA using React & Redux and Express
 
 * Features:
     * Implemented a backend server(using Express) that will host the React app as well as provide REST services
