@@ -3,6 +3,7 @@
 * Keypoint:
     * Implemented a backend server(using Express) that will host the React app as well as provide REST services
     * Applied CSS, JavaScript, React, Redux, Express, JSON, Restful API
+    * Deploy on Amazon EC2: http://52.42.88.83:8000/
 
 * Features:
     * Users can login/logout without passwords and send messages
