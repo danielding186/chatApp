@@ -1,4 +1,5 @@
-A chat application: a React SPA using React & Redux
+### 
+A chat application: a React SPA using React & Redux and Express
 
 * Features:
     * Implemented a backend server(using Express) that will host the React app as well as provide REST services
@@ -14,14 +15,14 @@ A chat application: a React SPA using React & Redux
     * /message (Post)
 
 * React App UI (Running on Port 3000):
->App
->>LoginForm
->>Chat
->>>UserList
->>>MessageList
->>>MessageInput
->>>LogoutButton
->>ErrorInfo
+    * App
+        * LoginForm
+        * Chat
+            * UserList
+            * MessageList
+            * MessageInput
+            * LogoutButton
+        * ErrorInfo
 
 * Redux state:
     * users: {},  // userList
