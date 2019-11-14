@@ -4,7 +4,10 @@ import './LoginForm.css';
 import { connect } from 'react-redux';
 import { loginUser } from './store/actions';
 
-const LoginForm = ({ loginUser }) => {
+const LoginForm = ({isLogined, loginUser }) => {
+  if (isLogined)
+    return (<div/>);
+
   let input;
   return (
     <div className="login-panel">
@@ -29,4 +32,4 @@ const LoginForm = ({ loginUser }) => {
     </div>)
 };
 
-export default connect(null, { loginUser })(LoginForm);
+export default connect(state => ({isLogined: state.isLogined}), { loginUser })(LoginForm);
