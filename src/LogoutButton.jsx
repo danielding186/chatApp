@@ -4,12 +4,10 @@ import { logoutUser } from './store/actions';
 
 const LogoutButton = ({ logoutUser }) => (
   <div className="logout">
-    <form onSubmit={e => {
-      e.preventDefault();
-      logoutUser();
-    }}>
-      <button type="submit">Logout</button>
-    </form>
+      <button type="submit" onClick={e => {
+         e.preventDefault();
+         logoutUser();   
+      }}>Logout</button>
   </div>
 );
 
