@@ -15,13 +15,13 @@ A chat application: a React SPA using React & Redux
 
 * React App UI (Running on Port 3000):
 >App
-    >>LoginForm
-    >>Chat
-        >>>UserList
-        >>>MessageList
-        >>>MessageInput
-        >>>LogoutButton
-    >>ErrorInfo
+>>LoginForm
+>>Chat
+>>>UserList
+>>>MessageList
+>>>MessageInput
+>>>LogoutButton
+>>ErrorInfo
 
 * Redux state:
     * users: {},  // userList
