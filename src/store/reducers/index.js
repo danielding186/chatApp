@@ -3,7 +3,7 @@ import { FETCH_MESSAGES, POST_MESSAGE, LOGIN_USER, LOGOUT_USER } from '../action
 const initialState = {
     users: {},
     messages: [],
-    inputUser: '',
+    currentUser: '',
     isLogined: false,
 };
 
@@ -22,13 +22,13 @@ const myReducer = (state = initialState, action) => {
                 ...state,
                 messages: action.messages,
                 users: action.users,
-                inputUser: action.username,
+                currentUser: action.username,
                 isLogined: true
             };
         case LOGOUT_USER:
             return {
                 ...state,
-                inputUser: "",
+                currentUser: "",
                 isLogined: false
             };
         default:

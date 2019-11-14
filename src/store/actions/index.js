@@ -17,7 +17,7 @@ export const fetchMessages = () => dispatch => {
 
 export const postMessage = text => dispatch => {
   console.log('postMessage:' + text);
-  let username = store.getState().inputUser;
+  let username = store.getState().currentUser;
   fetch('/messages/', {
     method: 'POST',
     headers: new Headers({
@@ -50,7 +50,7 @@ export const loginUser = (username) => dispatch => {
 
 export const logoutUser = () => dispatch => {
   console.log('logoutUser ....');
-  let username = store.getState().inputUser;
+  let username = store.getState().currentUser;
   fetch('/logout', {
     method: 'POST',
     headers: new Headers({ 'content-type': 'application/json' }),
