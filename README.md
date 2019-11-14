@@ -26,7 +26,7 @@
 * Redux state:
     * users: {},  // userList
     * messages: [], // messageList
-    * currentUser: '', // if currentUser === '', it means no User has logined
+    * currentUser: '', // if currentUser is empty, it means no user has logined. LoginForm will be shown.
 
 
 ### Installation
