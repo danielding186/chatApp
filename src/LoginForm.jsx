@@ -4,8 +4,8 @@ import './LoginForm.css';
 import { connect } from 'react-redux';
 import { loginUser } from './store/actions';
 
-const LoginForm = ({isLogined, loginUser }) => {
-  if (isLogined)
+const LoginForm = ({currentUser, loginUser }) => {
+  if (currentUser !== '')
     return (<div/>);
 
   let input;
@@ -32,4 +32,4 @@ const LoginForm = ({isLogined, loginUser }) => {
     </div>)
 };
 
-export default connect(state => ({isLogined: state.isLogined}), { loginUser })(LoginForm);
+export default connect(state => ({currentUser: state.currentUser}), { loginUser })(LoginForm);

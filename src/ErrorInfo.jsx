@@ -1,9 +1,9 @@
 import React from 'react';
 
-const UserError = ({ infoError }) => {
+const ErrorInfo = ({ infoError }) => {
 	return (
 		<div className="error">{infoError != null ? infoError.message : null}</div>
 	);
 };
 
-export default UserError;
+export default ErrorInfo;

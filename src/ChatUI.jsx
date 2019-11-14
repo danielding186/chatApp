@@ -7,17 +7,17 @@ import MessageInput from './MessageInput';
 import LogoutButton from './LogoutButton';
 import { connect } from 'react-redux';
 
-const ChatUI = ({ isLogined, users, messages, inputUser }) => {
-    if (!isLogined)
+const ChatUI = ({  users, messages, currentUser }) => {
+    if (currentUser === '')
         return (<div />);
     return (
         <div className="main-panel">
             <LogoutButton />
 
             <div className="display-panel">
-                <UserList users={users} currentUser={inputUser} />
+                <UserList users={users} currentUser={currentUser} />
                 <MessageList messages={messages}
-                    currentUser={inputUser}
+                    currentUser={currentUser}
                     users={users} />
             </div>
 

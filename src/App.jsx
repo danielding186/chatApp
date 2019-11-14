@@ -3,7 +3,7 @@ import './App.css';
 
 import LoginForm from './LoginForm';
 import ChatUI from './ChatUI';
-import UserError from './UserError';
+import ErrorInfo from './ErrorInfo';
 
 import { connect } from 'react-redux';
 import { fetchMessages } from './store/actions';
@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   refresh() {
-    if (!this.props.isLogined)
+    if (this.props.currentUser === '')
       return;
     this.props.fetchMessages();
   }
@@ -28,9 +28,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <LoginForm/>
+        <LoginForm />
         <ChatUI />
-        <UserError />
+        <ErrorInfo />
       </div>
     );
   }

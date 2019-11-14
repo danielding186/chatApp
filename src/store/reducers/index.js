@@ -1,10 +1,9 @@
 import { FETCH_MESSAGES, POST_MESSAGE, LOGIN_USER, LOGOUT_USER } from '../actions';
 
 const initialState = {
-    users: {},
-    messages: [],
-    currentUser: '',
-    isLogined: false,
+    users: {},  // userList
+    messages: [], // messageList
+    currentUser: '', // currentUser
 };
 
 const myReducer = (state = initialState, action) => {
@@ -22,14 +21,12 @@ const myReducer = (state = initialState, action) => {
                 ...state,
                 messages: action.messages,
                 users: action.users,
-                currentUser: action.username,
-                isLogined: true
+                currentUser: action.username
             };
         case LOGOUT_USER:
             return {
                 ...state,
-                currentUser: "",
-                isLogined: false
+                currentUser: ''
             };
         default:
             return state;
