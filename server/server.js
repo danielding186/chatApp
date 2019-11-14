@@ -3,10 +3,16 @@ const express = require('express');
 const app = express();
 const PORT = 4000;
 
+var fs = require('fs')
+const morgan = require('morgan');
+
 const path = require('path');
 let buildPath = '../client/build';
-
 app.use(express.static(path.join(__dirname, buildPath)));
+
+// create a write stream (in append mode)
+let accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+app.use(morgan('combined', { stream: accessLogStream }));
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, buildPath, 'index.html'));
