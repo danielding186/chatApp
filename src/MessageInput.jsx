@@ -1,28 +1,28 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import {postMessage} from './store/actions';
+import { postMessage } from './store/actions';
 
-const MessageInput = ({postMessage}) => {
+const MessageInput = ({ postMessage }) => {
 	let input;
-  	return (
+	return (
 		<div className="outgoing">
 			<form onSubmit={e => {
 				e.preventDefault()
 				if (!input.value.trim()) {
-				return
+					return
 				}
 				postMessage(input.value);
 				input.value = ''
 			}}>
-				<input className="msg-input" 
-						placeholder="Enter message to send"
-						ref= {node => (input = node)} />
+				<input className="msg-input"
+					placeholder="Enter message to send"
+					ref={node => (input = node)} />
 				<button className="msg-submit" type="submit">Send</button>
-	 		</form>
-	 	</div>
+			</form>
+		</div>
 	);
 }
 
-export default connect(null, {postMessage})(MessageInput);
+export default connect(null, { postMessage })(MessageInput);
 

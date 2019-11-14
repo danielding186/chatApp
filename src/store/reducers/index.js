@@ -8,8 +8,8 @@ const initialState = {
 };
 
 const myReducer = (state = initialState, action) => {
-    console.log('myReducer:' + {action});
-    switch(action.type) {
+    console.log('myReducer:' + { action });
+    switch (action.type) {
         case FETCH_MESSAGES:
         case POST_MESSAGE:
             return {
@@ -19,17 +19,17 @@ const myReducer = (state = initialState, action) => {
             };
         case LOGIN_USER:
             return {
-                    ...state,
-                    messages: action.messages,
-                    users: action.users,
-                    inputUser: action.username,
-                    isLogined: true
+                ...state,
+                messages: action.messages,
+                users: action.users,
+                inputUser: action.username,
+                isLogined: true
             };
         case LOGOUT_USER:
             return {
-                    ...state,
-                    inputUser: "",
-                    isLogined: false
+                ...state,
+                inputUser: "",
+                isLogined: false
             };
         default:
             return state;

@@ -13,12 +13,12 @@ import { fetchMessages } from './store/actions';
 
 class App extends Component {
   componentDidMount() {
-    this.interval = setInterval(() => { 
+    this.interval = setInterval(() => {
       this.refresh();
     }, 5000);
   }
 
-   componentWillUnmount() {
+  componentWillUnmount() {
     clearInterval(this.interval);
   }
 
@@ -33,26 +33,26 @@ class App extends Component {
     return (
       <div>
 
-        { !this.props.isLogined && 
-          <LoginForm />  }
+        {!this.props.isLogined &&
+          <LoginForm />}
 
-        { this.props.isLogined &&
+        {this.props.isLogined &&
           <div className="main-panel">
-            <LogoutButton/>
-            
+            <LogoutButton />
+
             <div className="display-panel">
-              <UserList users={this.props.users} currentUser={this.props.inputUser}/>
+              <UserList users={this.props.users} currentUser={this.props.inputUser} />
               <MessageList messages={this.props.messages}
-                           currentUser={this.props.inputUser}
-                           users={this.props.users}
-                           />
+                currentUser={this.props.inputUser}
+                users={this.props.users}
+              />
             </div>
-            <MessageInput/> 
+            <MessageInput />
           </div>
         }
- 
-        <UserError/>
-        
+
+        <UserError />
+
       </div>
     );
   }
@@ -60,8 +60,7 @@ class App extends Component {
 
 // function to convert the global state obtained from redux to local props
 function mapStateToProps(state) {
-  console.log('mapStateToProps:' + state.isLogined + ' messages:' +  state.messages);
-  return {...state}
+  return { ...state }
 }
 
 // wrapping the component within the connect HOC and calling the default function directly
