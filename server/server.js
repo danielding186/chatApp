@@ -1,7 +1,7 @@
 "use strict";
 const express = require('express');
 const app = express();
-const PORT = 4000;
+const PORT = 8000;
 
 var fs = require('fs')
 const morgan = require('morgan');
