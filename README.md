@@ -7,13 +7,13 @@ Features:
 * Users can login/logout without passwords and send messages
 * Can be usable by multiple users simultaneously, users and messages are visible to all users.
 
-Backend Server API (Running on Port 4000):
-1 /login (Post) 
-2 /logout (Post)
-3 /messages (Get)
-4 /message (Post)
+*Backend Server API (Running on Port 4000):
+    - /login (Post)
+    - /logout (Post)
+    - /messages (Get)
+    - /message (Post)
 
-React App UI (Running on Port 3000):
+*React App UI (Running on Port 3000):
 App
     LoginForm
     Chat
@@ -23,12 +23,10 @@ App
         LogoutButton
     ErrorInfo
 
-Redux state:
-const initialState = {
+*Redux state:
     users: {},  // userList
     messages: [], // messageList
     currentUser: '', // if currentUser === '', it means no User has logined
-};
 
 
 ### Installation
