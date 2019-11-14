@@ -10,7 +10,7 @@
     * User list and message list are visible to all users
     * It can be usable by multiple users simultaneously
 
-* Backend Server API (Running on Port 4000):
+* Backend Server API (Running on Port 8000):
     * /login (Post)
     * /logout (Post)
     * /messages (Get)
